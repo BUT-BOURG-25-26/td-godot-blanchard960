@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var move_speed:float = 3
-var player 
+var player : Player
 var look_at_position
 
 func _ready() -> void:
@@ -9,13 +9,19 @@ func _ready() -> void:
 	look_at_position = player.global_position
 
 func _physics_process(delta: float) -> void:
+	
 	var move = Vector3(player.global_position.x-global_position.x,0.0,player.global_position.z-global_position.z).normalized()
 	velocity = move * move_speed
 	
 	velocity.y = get_gravity().y
 	
-	
 	look_at_position.y = position.y
 	look_at(look_at_position)
 	
 	move_and_slide()
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		print(collision.get_collider())
+		if collision.get_collider() is Player:
+			(collision.get_collider() as Player).take_damage(1)
+			queue_free()

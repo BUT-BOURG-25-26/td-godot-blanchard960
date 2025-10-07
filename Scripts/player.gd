@@ -1,12 +1,15 @@
+class_name Player
 extends Node3D
 var healthbar
+
 @export var move_speed:float = 5
 @export var health: int = 3
+@export var max_health : int =5
 
 var move_inputs: Vector2
 
 func _ready() -> void:
-	healthbar = $RigidBody3D/SubViewport/HealthBar
+	healthbar = $SubViewport/HealthBar
 	healthbar.max_value = health
 
 func _process(delta:float) -> void:
@@ -27,3 +30,7 @@ func read_move_inputs():
 	move_inputs = move_inputs.normalized()
 	print(move_inputs)
 	return
+
+func take_damage(damage : int)-> void:
+	health -= damage
+	clamp(health,0,max_health)
