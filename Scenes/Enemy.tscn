@@ -1,5 +1,13 @@
-[gd_scene format=3 uid="uid://wx67d6ijx8ra"]
+[gd_scene load_steps=3 format=3 uid="uid://wx67d6ijx8ra"]
+
+[ext_resource type="Material" uid="uid://cytgd0eat0fs4" path="res://Materials/M_Enemy.tres" id="1_m1htj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1htj"]
 
 [node name="Enemy" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = ExtResource("1_m1htj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_m1htj")
