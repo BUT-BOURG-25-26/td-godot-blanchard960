@@ -12,8 +12,8 @@ func _on_timer_timeout():
 	
 	var distance : int = rng.randi_range(min_spawn_distance, max_spawn_distance)
 	
-	var x = 1 +rng.randi_range(-1, 1)
-	var z = 1 + rng.randi_range(-1, 1)
+	var x = 1 + rng.randf_range(-1, 1)
+	var z = 1 + rng.randf_range(-1, 1)
 		
 	var enemy = enemy_scene.instantiate()
 	get_parent().add_child(enemy)
