@@ -1,3 +1,4 @@
+class_name  VFKAttack
 extends Area3D 
 
 @onready var flash = $Flash
