@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		print(collision.get_collider())
-		if collision.get_collider() is Player:
-			(collision.get_collider() as Player).take_damage(1)
+		var collider = collision.get_collider()
+		if collider is Player:
+			(collider as Player).take_damage(1)
 			queue_free()

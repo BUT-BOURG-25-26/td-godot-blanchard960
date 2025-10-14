@@ -8,7 +8,7 @@
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_wovta")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["enemies"]]
 material_override = ExtResource("1_m1htj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
