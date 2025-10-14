@@ -4,7 +4,6 @@ extends CharacterBody3D
 @export var move_speed:float = 3
 var player : Player
 var look_at_position
-@onready var gameManager : GameManager = $"/root/GameManager"
 
 
 
@@ -31,6 +30,5 @@ func _physics_process(delta: float) -> void:
 			queue_free()
 			
 func destroy() -> void:
-	print("incrementKill")
-	gameManager.incrementKill()
+	GameManager.increase_score()
 	queue_free()
