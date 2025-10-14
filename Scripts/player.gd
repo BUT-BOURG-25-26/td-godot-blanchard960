@@ -3,14 +3,15 @@ extends Node3D
 var healthbar
 
 @export var move_speed:float = 5
-@export var health: int = 3
-@export var max_health : int =5
+@export var health: int = 5
+@export var max_health : int = 5
 
 var move_inputs: Vector2
 
 func _ready() -> void:
 	healthbar = $SubViewport/HealthBar
-	healthbar.max_value = health
+	healthbar.max_value = max_health
+	healthbar.value = health
 
 func _process(delta:float) -> void:
 	if Input.is_action_just_pressed("damage_player"):
@@ -32,7 +33,7 @@ func read_move_inputs():
 
 func take_damage(damage : int)-> void:
 	health -= damage
-	clamp(health,0,max_health)
+	if (health ==0):
+		get_tree().reload_current_scene()
 	healthbar.update(health)
-	
 	

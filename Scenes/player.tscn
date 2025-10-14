@@ -76,6 +76,7 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_cvnsp")
+move_speed = 6.0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -101,8 +102,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_cvnsp")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6t5aa")
-max_value = 3.0
-value = 3.0
+max_value = 5.0
+value = 5.0
 show_percentage = false
 script = ExtResource("3_6t5aa")
 
