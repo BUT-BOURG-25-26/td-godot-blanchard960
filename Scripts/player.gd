@@ -35,3 +35,4 @@ func take_damage(damage : int)-> void:
 	clamp(health,0,max_health)
 	healthbar.update(health)
 	
+	
