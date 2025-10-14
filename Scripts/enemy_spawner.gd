@@ -15,7 +15,6 @@ func _on_timer_timeout():
 	if( -1 > (player.global_position.x-x)+(player.global_position.z-z) || (player.global_position.x-x)+(player.global_position.z-z) > 1) :
 		# Spawner votre enemy
 		var enemy = enemy_scene.instantiate()
-		enemy.global_position = player.global_position +Vector3(x,0.0,z)
-	
 		get_parent().add_child(enemy)
+		enemy.position = player.global_position +Vector3(x,0.0,z)
 	
