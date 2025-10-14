@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm6f2e680tf4q"]
+[gd_scene load_steps=9 format=3 uid="uid://dm6f2e680tf4q"]
 
 [ext_resource type="PackedScene" uid="uid://bw0dhumjpcqmi" path="res://Scenes/player.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://bsybv12lanu0v" path="res://Scenes/EnemySpawner.tscn" id="1_nhkr4"]
+[ext_resource type="Script" uid="uid://cs740x4fsh75h" path="res://Scripts/nb_kill.gd" id="3_nhkr4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpc76"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -45,3 +46,8 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_hpc76")
+
+[node name="nbKill" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_nhkr4")
