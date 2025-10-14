@@ -33,6 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0431051, 0.254399, 8.21429
 transform = Transform3D(1, 0, 0, 0, 0.832061, 0.554685, 0, -0.554685, 0.832061, 0, 3.12405, 10.9635)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.62, 0)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
