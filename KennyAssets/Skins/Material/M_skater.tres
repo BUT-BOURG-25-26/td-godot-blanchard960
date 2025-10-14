@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bgbmh22gdvdki"]
+
+[ext_resource type="Texture2D" uid="uid://bhg4g06jiulkc" path="res://KennyAssets/Skins/skaterMaleA.png" id="1_n0bw0"]
+
+[resource]
+albedo_texture = ExtResource("1_n0bw0")

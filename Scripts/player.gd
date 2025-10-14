@@ -7,6 +7,8 @@ var healthbar
 @export var health: int = 5
 @export var max_health : int = 5
 
+@onready var animation_tree: AnimationTree = $characterMedium/AnimationTree
+
 var move_inputs: Vector2
 
 
@@ -25,8 +27,17 @@ func _process(delta:float) -> void:
 func _physics_process(delta: float) -> void:
 	read_move_inputs()
 	move_inputs *= move_speed * delta
+	animation_tree.set("parameters/conditions/isIdle", move_inputs == Vector2.ZERO)
+	animation_tree.set("parameters/conditions/isRunning",move_inputs != Vector2.ZERO)
+	
+	var velocity = Vector3(move_inputs.x, 0.0, move_inputs.y)
+	
+	if  velocity != Vector3.ZERO:
+		var look_at_point = global_position + (velocity*5.0)
+		look_at(look_at_point)
+		
 	if move_inputs != Vector2.ZERO:
-		global_position += Vector3(move_inputs.x, 0.0, move_inputs.y)
+		global_position += velocity
 	return
 
 func read_move_inputs():

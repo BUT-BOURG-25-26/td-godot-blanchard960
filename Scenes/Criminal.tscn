@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3cg4l1examp2"]
+
+[ext_resource type="PackedScene" uid="uid://dmu6eig5fahem" path="res://KennyAssets/Model/characterMedium.fbx" id="1_6djgp"]
+[ext_resource type="Material" uid="uid://c4kaiudndshxw" path="res://KennyAssets/Skins/Material/M_Criminal.tres" id="2_fdgsp"]
+
+[node name="characterMedium" instance=ExtResource("1_6djgp")]
+
+[node name="characterMedium" parent="Root/Skeleton3D" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_fdgsp")

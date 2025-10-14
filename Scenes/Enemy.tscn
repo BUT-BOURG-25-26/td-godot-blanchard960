@@ -1,15 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfqmkxrp34xdj"]
+[gd_scene load_steps=11 format=3 uid="uid://bfqmkxrp34xdj"]
 
-[ext_resource type="Material" uid="uid://cytgd0eat0fs4" path="res://Materials/M_Enemy.tres" id="1_m1htj"]
 [ext_resource type="Script" uid="uid://cir4f0aesp8s5" path="res://Scripts/enemy.gd" id="1_wovta"]
+[ext_resource type="PackedScene" uid="uid://d3cg4l1examp2" path="res://Scenes/Criminal.tscn" id="2_1exfc"]
+[ext_resource type="Animation" uid="uid://bjs667ku34j53" path="res://KennyAssets/Animations/Root_Idle.res" id="3_mo1ky"]
+[ext_resource type="Animation" uid="uid://bc7g8670mox8p" path="res://KennyAssets/Animations/Root_Jump.res" id="4_6bs3c"]
+[ext_resource type="Animation" uid="uid://bubanlh7nw5nt" path="res://KennyAssets/Animations/Root_Run.res" id="5_uoxpr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1htj"]
+size = Vector3(1, 1.86469, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idouy"]
+_data = {
+&"Root_Idle": ExtResource("3_mo1ky"),
+&"Root_Jump": ExtResource("4_6bs3c"),
+&"Root_Run": ExtResource("5_uoxpr")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0o0ue"]
+animation = &"KennyAnimation/Root_Run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6s1gy"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uihya"]
+states/KennyAnimation_Root_Run/node = SubResource("AnimationNodeAnimation_0o0ue")
+states/KennyAnimation_Root_Run/position = Vector2(480, 101)
+transitions = ["Start", "KennyAnimation_Root_Run", SubResource("AnimationNodeStateMachineTransition_6s1gy")]
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_wovta")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["enemies"]]
-material_override = ExtResource("1_m1htj")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955231, 0)
 shape = SubResource("BoxShape3D_m1htj")
+
+[node name="characterMedium" parent="." instance=ExtResource("2_1exfc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="characterMedium"]
+libraries = {
+&"KennyAnimation": SubResource("AnimationLibrary_idouy")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="characterMedium"]
+tree_root = SubResource("AnimationNodeStateMachine_uihya")
+anim_player = NodePath("../AnimationPlayer")
