@@ -38,6 +38,5 @@ func read_move_inputs():
 func take_damage(damage : int)-> void:
 	health -= damage
 	if (health ==0):
-		get_tree().reload_current_scene()
+		GameManager.display_game_over(true)
 	healthbar.update(health)
-	

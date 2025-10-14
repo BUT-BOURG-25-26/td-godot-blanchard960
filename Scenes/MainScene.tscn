@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm6f2e680tf4q"]
+[gd_scene load_steps=10 format=3 uid="uid://dm6f2e680tf4q"]
 
 [ext_resource type="PackedScene" uid="uid://bw0dhumjpcqmi" path="res://Scenes/player.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://bsybv12lanu0v" path="res://Scenes/EnemySpawner.tscn" id="1_nhkr4"]
-[ext_resource type="Script" uid="uid://cs740x4fsh75h" path="res://Scripts/nb_kill.gd" id="3_nhkr4"]
+[ext_resource type="Script" uid="uid://d4ctim24jsrl2" path="res://Scripts/game_over_menu.gd" id="3_nhkr4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hpc76"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -19,6 +19,8 @@ tonemap_mode = 2
 [sub_resource type="PlaneMesh" id="PlaneMesh_cihdc"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hpc76"]
+
+[sub_resource type="Theme" id="Theme_7rqgy"]
 
 [node name="MainScene" type="Node3D"]
 
@@ -47,7 +49,56 @@ skeleton = NodePath("../..")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_hpc76")
 
-[node name="nbKill" type="Label" parent="."]
+[node name="nbKill" type="Label" parent="." groups=["label"]]
+unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
+text = "0
+"
+
+[node name="GameOverMenu" type="CanvasLayer" parent="."]
+
+[node name="GameOverMenu" type="Control" parent="GameOverMenu" groups=["game_over"]]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("3_nhkr4")
+
+[node name="RestartButton" type="Button" parent="GameOverMenu/GameOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 525.5
+offset_top = 288.5
+offset_right = 586.5
+offset_bottom = 319.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7rqgy")
+theme_override_colors/font_disabled_color = Color(0, 0.811765, 0, 1)
+text = "restart"
+
+[node name="QuitButton" type="Button" parent="GameOverMenu/GameOverMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.368
+anchor_right = 0.5
+anchor_bottom = 0.368
+offset_left = 526.0
+offset_top = 208.28
+offset_right = 587.0
+offset_bottom = 239.28
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7rqgy")
+theme_override_colors/font_disabled_color = Color(0, 0.811765, 0, 1)
+text = "quit"
+
+[connection signal="pressed" from="GameOverMenu/GameOverMenu/RestartButton" to="GameOverMenu/GameOverMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverMenu/GameOverMenu/QuitButton" to="GameOverMenu/GameOverMenu" method="_on_quit_button_pressed"]
