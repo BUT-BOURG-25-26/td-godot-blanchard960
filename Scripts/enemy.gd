@@ -4,6 +4,8 @@ extends CharacterBody3D
 var player : Player
 var look_at_position
 
+
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	look_at_position = player.global_position
@@ -21,7 +23,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
-		print(collision.get_collider())
 		var collider = collision.get_collider()
 		if collider is Player:
 			(collider as Player).take_damage(1)
