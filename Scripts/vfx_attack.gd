@@ -13,3 +13,7 @@ func emit():
 
 func _on_shockwave_finished() -> void:
 	queue_free()
+	
+func _on_body_entered(body):
+	if (body is Enemy):
+		body.destroy()

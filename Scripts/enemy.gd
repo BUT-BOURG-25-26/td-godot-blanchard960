@@ -1,3 +1,4 @@
+class_name Enemy
 extends CharacterBody3D
 
 @export var move_speed:float = 3
@@ -27,3 +28,6 @@ func _physics_process(delta: float) -> void:
 		if collider is Player:
 			(collider as Player).take_damage(1)
 			queue_free()
+			
+func destroy() -> void:
+	queue_free()
