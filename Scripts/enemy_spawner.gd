@@ -11,10 +11,8 @@ var rng = RandomNumberGenerator.new()
 func _on_timer_timeout():
 	player = get_tree().get_first_node_in_group("player")
 	var x = rng.randi_range(-distance_from_player, distance_from_player)
-	var y = rng.randi_range(-distance_from_player,distance_from_player)
 	var z = rng.randi_range(-distance_from_player, distance_from_player)
-	if( -1 > (player.global_position.x-x)+(player.global_position.y-y) || (player.global_position.x-x)+(player.global_position.y-y) > 1) :
-		print("x : " ,x," z : ",z)
+	if( -1 > (player.global_position.x-x)+(player.global_position.z-z) || (player.global_position.x-x)+(player.global_position.z-z) > 1) :
 		# Spawner votre enemy
 		var enemy = enemy_scene.instantiate()
 		enemy.global_position = player.global_position +Vector3(x,0.0,z)
