@@ -1,7 +1,7 @@
 extends Node3D
 
 #permet de référencer votre scène enemy au sein de votre script
-@export var enemy_scene: PackedScene  = preload("res://Scenes/Enemy.tscn")
+@export var enemy_scene: PackedScene
 @export var distance_from_player : int = 10
 var player : Player
 var rng = RandomNumberGenerator.new()
